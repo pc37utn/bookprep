@@ -404,6 +404,14 @@ foreach ($dfiles as $dfil) {
     $xnew='./'.$xbase.'/'.$meta.'.xml';
     if(!file_exists($xnew)) copy($dfil,$xnew);
     print "copying: $dfil \n  to $xnew\n";
+    // also check for existing pdf file
+    $xpdf='./'.$xbase.'/'.$xbase.'.pdf';
+    print "Checking for $xpdf\n";
+    $xpdfnew='./'.$xbase.'/PDF.pdf';
+    if(file_exists($xpdf)) {
+      rename($xpdf,$xpdfnew);
+      print "Renaming $xpdf to $xpdfnew\n";
+    }
   }// end if xml
   elseif ($end=='.jp2') {
     $fromtype='jp2';
